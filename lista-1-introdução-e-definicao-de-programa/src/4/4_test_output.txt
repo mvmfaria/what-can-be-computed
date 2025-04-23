@@ -1,0 +1,10 @@
+Test case 1: input='58 41 78 3 25 9', expected=53, got=53
+Test case 2: input='10 20 30 40 50 60', expected=120, got=120
+Test case 3: input='5 15 25 35', expected=50, got=50
+Test case 4: input='12, 1', expected=1, got=1
+Test case 5: input='1 2 3', expected=2, got=2
+Test case 6: input='7 14 21 28', expected=42, got=42
+Test case 7: input='0 0 0 0', expected=0, got=0
+Test case 8: input='9 18 27 36', expected=54, got=54
+Test case 9: input='11 22 33 44', expected=66, got=66
+Test case 10: input='3 6 9 12', expected=18, got=18

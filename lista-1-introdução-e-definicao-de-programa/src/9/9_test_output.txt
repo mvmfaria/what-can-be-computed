@@ -1,0 +1,10 @@
+Test case 1: input='apple, banana, apple, orange, banana', expected='apple:2, banana:2, orange:1', got=apple:2, banana:2, orange:1
+Test case 2: input='cat, dog, cat, bird', expected='cat:2, dog:1, bird:1', got=cat:2, dog:1, bird:1
+Test case 3: input='red, blue, green, red', expected='red:2, blue:1, green:1', got=red:2, blue:1, green:1
+Test case 4: input='one, two, three', expected='one:1, two:1, three:1', got=one:1, two:1, three:1
+Test case 5: input='a, b, a', expected='a:2, b:1', got=a:2, b:1
+Test case 6: input='x, y, z', expected='x:1, y:1, z:1', got=x:1, y:1, z:1
+Test case 7: input='hello, world', expected='hello:1, world:1', got=hello:1, world:1
+Test case 8: input='test, test', expected='test:2', got=test:2
+Test case 9: input='python, java', expected='python:1, java:1', got=python:1, java:1
+Test case 10: input='apple', expected='apple:1', got=apple:1

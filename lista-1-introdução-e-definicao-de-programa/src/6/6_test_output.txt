@@ -1,0 +1,10 @@
+Test case 1: input='58 41 78 3 25 9', expected=yes, got=yes
+Test case 2: input='10 20 30 40 50 60', expected=no, got=no
+Test case 3: input='5 15 25 35', expected=no, got=no
+Test case 4: input='12, 1', expected=no, got=no
+Test case 5: input='1 2 3', expected=yes, got=yes
+Test case 6: input='7 14 21 28', expected=no, got=no
+Test case 7: input='0 0 0 0', expected=no, got=no
+Test case 8: input='9 18 27 36', expected=no, got=no
+Test case 9: input='11 22 33 44', expected=no, got=no
+Test case 10: input='3 6 9 1', expected=yes, got=yes

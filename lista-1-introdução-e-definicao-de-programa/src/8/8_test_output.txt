@@ -1,0 +1,10 @@
+Test case 1: input='A man a plan a canal Panama', expected='yes', got=yes
+Test case 2: input='racecar', expected='yes', got=yes
+Test case 3: input='hello', expected='no', got=no
+Test case 4: input='Was it a car or a cat I saw', expected='yes', got=yes
+Test case 5: input='No lemon no melon', expected='yes', got=yes
+Test case 6: input='Python', expected='no', got=no
+Test case 7: input='Madam', expected='yes', got=yes
+Test case 8: input='Step on no pets', expected='yes', got=yes
+Test case 9: input='Not a palindrome', expected='no', got=no
+Test case 10: input='Able was I saw Elba', expected='yes', got=yes

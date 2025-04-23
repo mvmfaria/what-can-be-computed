@@ -1,0 +1,298 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% --------------------------------------------------------
+% Tau
+% LaTeX Template
+% Version 2.4.4 (28/02/2025)
+%
+% Author: 
+% Guillermo Jimenez (memo.notess1@gmail.com)
+% 
+% License:
+% Creative Commons CC BY 4.0
+% --------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[9pt,a4paper,twocolumn,twoside]{tau-class/tau}
+\usepackage[english]{babel}
+\usepackage{minted}
+
+%% Spanish babel recomendation
+% \usepackage[spanish,es-nodecimaldot,es-noindentfirst]{babel} 
+
+%% Draft watermark
+% \usepackage{draftwatermark}
+
+%----------------------------------------------------------
+% TITLE
+%----------------------------------------------------------
+
+\journalname{Teoria da Computação, PPComp: “What can be computed?”}
+\title{Resolução da Lista 1 - Introdução \& definição de programa}
+
+%----------------------------------------------------------
+% AUTHORS, AFFILIATIONS AND PROFESSOR
+%----------------------------------------------------------
+
+\author{Marcos Vinicius Mendes Faria}
+
+%----------------------------------------------------------
+
+\affil{Instituto Federal de Educação, Ciência e Tecnologia do Espírito Santo}
+
+\professor{Prof. Jefferson O. Andrade}
+
+%----------------------------------------------------------
+% FOOTER INFORMATION
+%----------------------------------------------------------
+
+\institution{Instituto Federal de Educação, Ciência e Tecnologia do Espírito Santo}
+\theday{04/2025}
+\leadauthor{Marcos Faria.}
+\course{Teoria da Computação}
+
+%----------------------------------------------------------
+
+\begin{document}
+		
+    \maketitle 
+    \thispagestyle{firststyle} 
+    % \tableofcontents
+    % \linenumbers 
+    
+%----------------------------------------------------------
+Os códigos com os testes e saídas de teste estarão disponíveis no meu github\footnote{\url{https://github.com/mvmfaria/what-can-be-computed}}.
+\section{Tipos de problema}
+
+    \begin{tauenv}[frametitle= Exemplos de Tipos de Problemas]
+            Dê um exemplo de cada um dos seguintes tipos de problemas: (i) tratável, (ii) intratável e (iii) não
+            computável. Descreva cada problema em uma ou duas frases. Não use exemplos já descritos no capítulo
+            1 do WCBC – faça alguma pesquisa para encontrar exemplos diferentes.
+    \end{tauenv}
+
+    \begin{enumerate}
+        \item O Problema da Árvore Geradora Mínima envolve encontrar uma árvore conectando todos os vértices de um grafo ponderado, com o menor peso total.  
+        Sua solução pode ser encontrada usando os algoritmos de Kruskal ou Prim, ambos com complexidade \(O(|E|\log|V|)\), o que caracteriza o problema como tratável \footnote{\url{https://en.wikipedia.org/wiki/Minimum_spanning_tree}}.
+        \newline
+    
+        \item A Torre de Hanói é um quebra-cabeça com três pinos e discos empilhados em ordem decrescente, cujo objetivo é movê-los para outro pino sem violar as regras de movimentação. Sua solução é recursiva e requer no mínimo $2^n - 1$ movimentos, crescendo exponencialmente com o número de discos. Por isso, apesar de simples, torna-se intratável para grandes $n$, como no caso de 64 discos, que exigiriam mais de 18 quintilhões de movimentos\footnote{\url{http://clubes.obmep.org.br/blog/torre-de-hanoi/}}.
+        \newline
+    
+        \item O Problema da Correspondência de Post consiste em, dado um conjunto de pares de cadeias de caracteres \((u_i, v_i)\), decidir se existe uma sequência de índices tal que as concatenações das cadeias superiores e inferiores sejam iguais. Ou seja, encontrar uma sequência \(i_1, i_2, \dots, i_k\) tal que \(u_{i_1}u_{i_2}\dots u_{i_k} = v_{i_1}v_{i_2}\dots v_{i_k}\). Foi provado que não existe algoritmo capaz de resolver todas as instâncias desse problema\footnote{\url{https://en.wikipedia.org/wiki/Post_correspondence_problem}}.
+
+    \end{enumerate}
+
+\section{Descriptografia de senha}
+\section{Alinhamento múltiplo de sequências}
+\section{Soma de todo segundo inteiro}
+
+    \subsection{Enunciado:}
+
+        \begin{tauenv}[frametitle = Soma de todo segundo inteiro.]
+                Escreva um programa que receba como entrada uma lista de inteiros separados por espaços em
+                branco. A saída é uma string representando a soma de todo segundo inteiro na lista. Por exemplo,
+                se a entrada for ``58 41 78 3 25 9'', então a saída é ``53'', porque 41 + 3 + 9 = 53.
+        \end{tauenv}
+
+    \subsection{Solução:}
+
+        \inputminted{python}{src/4/4.py}
+
+    \subsection{Descrição:}
+
+        Para esse problema, optei por evitar o uso da função \texttt{split()}, que já separa a string por um caractere predefinido, nesse caso, o espaço em branco (`` ''). Basicamente, utilizei um loop que vai concatenando caracteres até encontrar um espaço. Quando encontra, a string acumulada é convertida para inteiro e somada ao total, caso o contador seja 1 (de forma que eu intercale cada elemento da lista e sempre pegue o segundo).
+	
+\section{Soma de todo terceiro inteiro}
+
+    \subsection{Enunciado:}
+
+        \begin{tauenv}[frametitle = Soma de todo terceiro inteiro.]
+                Escreva um programa, similar ao programa em (1), mas somando todo terceiro elemento da entrada
+                em vez de todo segundo elemento.
+        \end{tauenv}
+        
+    \subsection{Solução e Descrição:}
+
+        Como o próprio enunciado sugere, esse problema é basicamente o mesmo que o de cima. Dessa forma, a única mudança de código que precisei fazer foi ao invés de validar \texttt{counter == 1} eu passei a verificar \texttt{counter == 2} de modo que some a cada 3 elementos.
+
+        Os códigos e testes estão disponíveis no repositório \footnote{\url{https://github.com/mvmfaria/what-can-be-computed}} para evitar um relatório redundante.
+    
+\section{Soma dos terceiros maior que segundos}
+
+    \subsection{Enunciado:}
+	
+        \begin{tauenv}[frametitle = Soma dos terceiros maior que segundos.]
+                Escreva um programa de decisão que aceite uma lista de inteiros se a soma de todo terceiro
+                elemento for maior que a soma de todo segundo elemento, e rejeite caso contrário. Seu programa
+                deve importar e usar os programas de (1) e (2).
+        \end{tauenv}
+
+    \subsection{Solução:}
+
+        \inputminted{python}{src/6/6.py}
+		
+    \subsection{Descrição:}
+	
+        Uma vez que temos os métodos \texttt{4.py} e \texttt{5.py} bastou fazer uma simples validação comparando se o resultado do primeiro é maior que o do segundo para a mesma string de entrada.
+		
+\section{Programa de decisão python minimalista}
+
+    \subsection{Enunciado:}
+
+        \begin{tauenv}[frametitle = {Programa de decisão python minimalista.}]
+                Escreva um programa de decisão em Python que seja o mais curto possível, medido pelo número de
+                caracteres no arquivo de código fonte. Seu programa deve satisfazer a definição formal de um programa Python.
+        \end{tauenv}
+
+    \subsection{Solução:}
+
+        \inputminted{python}{src/7/7.py}
+
+    \subsection{Descrição:}
+
+        A ideia aqui foi usar o mínimo possível, tanto no nome do método, entrada e retorno de modo que ainda atendesse a definição formal.
+		
+\section{Reconhecimento de palíndromos}
+
+    \subsection{Enunciado:}
+	
+        \begin{tauenv}[frametitle = Reconhecimento de palíndromos.]
+                Escreva uma função em Python chamada eh\_palindromo(texto) que receba uma string texto como entrada e retorne ``yes'' se a string for um palíndromo (ou seja, lê-se da mesma forma da esquerda para a direita e da direita para a esquerda, ignorando espaços e diferenças entre maiúsculas e minúsculas), e ``no'' caso contrário. Por exemplo, eh\_palindromo(``A man a plan a canal Panama'') deve retornar ``yes'', e eh\_palindromo(``hello'') deve retornar ``no''.
+        \end{tauenv}
+		
+    \subsection{Solução:}
+
+        \inputminted{python}{src/8/8.py}
+
+    \subsection{Descrição:}
+
+        Para a resolução desse problema, temos três partes principais: primeiro, tratamos a string convertendo para letras minúsculas com a função \texttt{lower()}, em seguida, separamos em uma lista com os segmentos de palavras e, por fim, juntamos tudo com a função \texttt{join()}. Em seguida, usamos a função \texttt{reverse\_string()} que foi reutilizado do problema de ``Inversão de String'' para inverter a string e, por fim, validar se a string invertida é igual a original.
+		
+\section{Contagem de Ocorrências em String}
+
+    \subsection{Enunciado:}
+	
+        \begin{tauenv}[frametitle = Contagem de Ocorrências em String.]
+                Escreva um programa em Python que receba uma string contendo uma sequência de elementos separados por vírgula e espaço (``, ''), por exemplo: ``maçã, banana, maçã, laranja, banana''
+                O programa deve contar a ocorrência de cada elemento e retornar uma string formatada como:
+                ``elemento1:quantidade1, elemento2:quantidade2, ...'' No exemplo dado, a saída seria: ``maçã:2, banana:2, laranja:1'' A ordem dos elementos na string de saída não é importante.
+        \end{tauenv}
+
+    \subsection{Solução:}
+
+        \inputminted{python}{src/9/9.py}
+
+    \subsection{Descrição:}
+
+        Neste problema, identifiquei inicialmente que a saída esperada era semelhante a um dicionário, o que me levou a utilizar essa estrutura para resolvê-lo. Primeiro, crio um dicionário vazio e uma lista com os elementos da string usando a função \texttt{split(', ')}. Em seguida, percorro cada elemento da lista, verificando se já existe uma chave correspondente no dicionário; se não existir, eu a crio, e se já existir, incremento em 1 o valor associado a essa chave. Por fim, com o dicionário completo, percorro seus elementos para formatar a string da maneira esperada.
+	
+\section{Inversão de String}
+
+    \subsection{Enunciado:}
+	
+        \begin{tauenv}[frametitle = Inversão de string.]
+                Escreva um programa em Python que receba uma string como entrada. O programa deve simular o
+                uso de uma pilha para inverter a ordem dos caracteres da string de entrada e retornar a string invertida como saída. Por exemplo, se a entrada for ``python'', a saída deve ser ``nohtyp''.
+        \end{tauenv}
+
+    \subsection{Solução:}
+
+        \inputminted{python}{src/10/10.py}
+
+    \subsection{Descrição:}
+
+        Neste problema, a ideia é simples. Inicialmente, é criada uma lista de caracteres a partir da string recebida como parâmetro, além de uma lista vazia que representa a pilha. Em seguida, essa lista é percorrida e, para cada caractere, ele é adicionado à pilha. Ao final do loop, cada caractere é desempilhado, resultando na string original invertida.
+	
+\section{Project Euler - Bouncy Numbers - Problem 112 - 15\%}
+
+    \subsection{Enunciado:}
+
+        \begin{tauenv}[frametitle = Bouncy Numbers.]
+                Working from left-to-right, if no digit is exceeded by the digit to its left, it is called an \textbf{increasing number}; for example, \texttt{134468}.
+
+                Similarly, if no digit is exceeded by the digit to its right, it is called a \textbf{decreasing number}; for example, \texttt{66420}.
+                
+                We shall call a positive integer that is neither increasing nor decreasing a \textbf{bouncy} number; for example, \texttt{155349}.
+                
+                Clearly, there cannot be any bouncy numbers below one hundred, but just over half of the numbers below one thousand (\texttt{525}) are bouncy. In fact, the least number for which the proportion of bouncy numbers first reaches \textbf{50\%} is \texttt{538}.
+                
+                Surprisingly, bouncy numbers become more and more common, and by the time we reach \texttt{21780}, the proportion of bouncy numbers is equal to \textbf{90\%}.
+                
+                Find the least number for which the proportion of bouncy numbers is exactly 99\%.
+        \end{tauenv}
+
+    \subsection{Solução:}
+
+        \inputminted{python}{src/11/11.py}
+
+    \subsection{Descrição:}
+
+        O primeiro desafio era implementar os métodos que retornavam se um número era crescente ou decrescente, que no geral são semelhantes. O que em Python não seria uma tarefa difícil se eu simplesmente convertesse o número para uma lista e em seguida percorresse com um \texttt{for}, validando sempre o elemento atual com o do índice +1. Porém, eu lembrei que era possível manipular os dígitos de um número diretamente usando o operador de resto (\%) e a divisão inteira (//), o que me pareceu mais interessante de implementar. 
+
+        Até relembrar por completo os operadores foi um pouco de tentativa e erro. Mas no geral, a ideia era manter uma variável \texttt{amount} para controlar a reconstrução parcial do número. O loop só para quando eu tiver reconstruído todo o número original passado como parâmetro. 
+        
+        Além disso, eu defini uma variável chamada \texttt{counter}, iniciada em 1, para me ajudar a extrair os dígitos específicos (unidade, dezena, centena, etc.) com base na posição. A lógica usada foi:
+        
+        \begin{verbatim}
+        remainder = number % (10 * counter)
+        current = remainder // counter
+        \end{verbatim}
+        
+        Por exemplo, se o número for 12345 e o \texttt{counter} estiver valendo 100, então:
+        
+        \begin{itemize}
+          \item \texttt{remainder = 12345 \% 1000 = 345}
+          \item \texttt{current = 345 // 100 = 3}
+        \end{itemize}
+        
+        Ou seja, conseguimos extrair o dígito das centenas diretamente.
+        
+        Uma vez tendo o dígito extraído (\texttt{current}), eu multiplicava ele pelo \texttt{counter} e somava ao \texttt{amount}. Isso garante que, ao longo do loop, a variável \texttt{amount} vá acumulando o valor total do número original, usado como condição de parada. Em seguida, eu multiplicava o \texttt{counter} por 10 para passar para a próxima casa decimal (unidade $\rightarrow$ dezena $\rightarrow$ centena, etc.).
+        
+        A comparação entre dígitos vem logo após: para o método de número crescente, a verificação é se o número atual é \textbf{maior} do que o anterior (o que quebraria a sequência crescente), e para o decrescente, se o número atual é \textbf{menor}. Caso essa validação falhe, é retornado \texttt{False}.
+        
+        É válido lembrar que a variável \texttt{last\_number} muda o valor inicial dependendo do método. No caso do método crescente, começamos com 9, pois nenhum dígito será maior que esse. No caso do decrescente, começamos com -1, garantindo que qualquer dígito será maior, e assim podemos iniciar a comparação corretamente.
+        
+        Caso a validação seja atendida, seguimos para o próximo dígito, atualizando \texttt{last\_number} com o valor de \texttt{current}, até que o loop termine. Se todos os dígitos respeitarem o padrão, retornamos \texttt{True} indicando que o número é crescente ou decrescente, conforme o método.
+
+        Com os métodos de verificação \texttt{is\_increasing()} e \texttt{is\_decreasing()} corretamente implementados, identificar se um número era \textit{bouncy} tornou-se uma tarefa simples. A ideia era verificar se ambos os métodos retornavam \texttt{False} para um mesmo número. Caso isso ocorresse, significava que o número não era nem crescente nem decrescente, sendo, portanto, classificado como bouncy.
+
+        O desafio final era determinar o número para o qual a proporção de bouncy numbers fosse exatamente 99\%. Para isso, criei um método chamado \texttt{prop\_of\_bouncy\_numbers()}, cuja função é calcular essa proporção em um intervalo de 1 até $n$ (passado como parâmetro). A lógica é percorrer todos os números dentro desse intervalo e contar quantos deles são bouncy, retornando, ao final, a proporção entre essa quantidade e o valor de $n$.
+        
+        A etapa seguinte foi encontrar, de fato, o número desejado. Para isso, utilizei o método \texttt{find\_least\_bouncy()}, que executa \texttt{prop\_of\_bouncy\_numbers()} em um loop crescente até que a proporção atinja ou ultrapasse 99\%. No entanto, fazer isso a partir do número 1 seria extremamente ineficiente. Assim, optei por iniciar com valores maiores, escolhidos de forma lógica com base em tentativas anteriores, até encontrar um ponto de partida em que a proporção estivesse próxima de 99\%.
+        
+        Após algumas execuções, identifiquei que o número \textbf{1586990} produzia uma proporção bastante próxima do valor desejado. A partir dele, executei o método final com incrementos unitários até atingir exatamente 99\%.
+
+        A saída foi essa:
+
+        \begin{verbatim}
+        0.9899999369876307
+        1586991
+        0.9899999432889034
+        1586992
+        0.989999949590168
+        1586993
+        0.9899999558914249
+        1586994
+        0.9899999621926737
+        1586995
+        0.9899999684939146
+        1586996
+        0.9899999747951476
+        1586997
+        0.9899999810963725
+        1586998
+        0.9899999873975897
+        1586999
+        0.9899999936987988
+        1587000
+        0.99
+        1587000
+        \end{verbatim}
+
+%----------------------------------------------------------
+
+\printbibliography
+
+%----------------------------------------------------------
+
+\end{document}
